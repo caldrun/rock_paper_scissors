@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function computerPlayer(){
+            let compChoice = ['rock', 'paper', 'scissors'];
+            const computerSelection = compChoice[Math.floor(Math.random() * compChoice.length)];
+        }
+
+        function playRound(playerSelection, computerSelection) {
+
+        }
+
+        const playerSelection = 'rock'
+        const computerSelection = computerPlayer()
+        console.log(playRound(playerSelection, computerSelection))
+
+        function game(){
+            prompt("Input Your Weapon:");
+            playRound();
+        }
+
+    </script>
+</body>
+</html>
