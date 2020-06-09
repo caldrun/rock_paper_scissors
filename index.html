@@ -6,23 +6,82 @@
 </head>
 <body>
     <script>
+       //Get Computer Choice
         function computerPlayer(){
-            let compChoice = ['rock', 'paper', 'scissors'];
-            const computerSelection = compChoice[Math.floor(Math.random() * compChoice.length)];
+            let choiceStack = ['rock', 'paper', 'scissors'];
+            let randomNum = Math.floor(Math.random() * 3);
+            let computerSelection = choiceStack[randomNum];
+            return computerSelection;
         }
 
-        function playRound(playerSelection, computerSelection) {
-
+        //get game winner
+        function playRound(p, c){
+            if(p === c){
+                return 'draw';
+            }
+            else if(p === 'rock'){
+                if(c === 'paper'){
+                    return 'computer';
+                }
+                else
+                return 'player';
+            }
+            else if(p === 'paper'){
+                if(c === 'scissors'){
+                    return 'computer';
+                }
+                else
+                return 'player';
+            }
+            else if(p === 'scissors'){
+                if(c === 'rock'){
+                    return 'computer';
+                }
+                else
+                return 'player';
+            }
+            else
+            return 'invalid input';
         }
 
-        const playerSelection = 'rock'
-        const computerSelection = computerPlayer()
-        console.log(playRound(playerSelection, computerSelection))
-
+        
+        //start game
         function game(){
-            prompt("Input Your Weapon:");
-            playRound();
+            let playerScore = 0;
+            let computerScore = 0;
+
+            for (let i = 0; i < 5; i++){ //loop game 5 times
+            playerSelection = prompt("Input Your Weapon:");
+            playerSelection = playerSelection.toLowerCase();
+            console.log('player chose: ' + playerSelection);
+            computerSelection = computerPlayer();
+            console.log('computer chose: ' + computerSelection);
+            let winner = playRound(playerSelection, computerSelection);
+            console.log('This round\'s winner is: ' + winner);
+            
+            //calculate game winner and add to score
+            if(winner === 'player'){
+                playerScore++;
+            }
+            else if(winner === 'computer'){
+                computerScore++;
+            }
+            else console.log('no points given');
+
+            console.log(`player: ${playerScore} computer: ${computerScore}`);//display score
+            }
+
+            //display final winner
+            if(playerScore > computerScore){
+                console.log('Player Wins');
+            }
+            else if(playerScore < computerScore){
+                console.log('Computer Wins');
+            }
+            else
+                console.log('Game Ends in a Draw');
         }
+        
 
     </script>
 </body>
