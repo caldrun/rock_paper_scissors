@@ -2,87 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script>
-       //Get Computer Choice
-        function computerPlayer(){
-            let choiceStack = ['rock', 'paper', 'scissors'];
-            let randomNum = Math.floor(Math.random() * 3);
-            let computerSelection = choiceStack[randomNum];
-            return computerSelection;
-        }
+    <h1> Rock Paper Scissors</h1>
 
-        //get game winner
-        function playRound(p, c){
-            if(p === c){
-                return 'draw';
-            }
-            else if(p === 'rock'){
-                if(c === 'paper'){
-                    return 'computer';
-                }
-                else
-                return 'player';
-            }
-            else if(p === 'paper'){
-                if(c === 'scissors'){
-                    return 'computer';
-                }
-                else
-                return 'player';
-            }
-            else if(p === 'scissors'){
-                if(c === 'rock'){
-                    return 'computer';
-                }
-                else
-                return 'player';
-            }
-            else
-            return 'invalid input';
-        }
+    <h2 class="message"> First to get 5 points Wins </h2>
 
-        
-        //start game
-        function game(){
-            let playerScore = 0;
-            let computerScore = 0;
+    <div class="choices">
+        <button class="choice" data-selection="rock"> rock </button>
+        <button class="choice" data-selection="paper"> paper </button>
+        <button class="choice" data-selection="scissors"> scissors </button>
+    </div>
 
-            for (let i = 0; i < 5; i++){ //loop game 5 times
-            playerSelection = prompt("Input Your Weapon:");
-            playerSelection = playerSelection.toLowerCase();
-            console.log('player chose: ' + playerSelection);
-            computerSelection = computerPlayer();
-            console.log('computer chose: ' + computerSelection);
-            let winner = playRound(playerSelection, computerSelection);
-            console.log('This round\'s winner is: ' + winner);
-            
-            //calculate game winner and add to score
-            if(winner === 'player'){
-                playerScore++;
-            }
-            else if(winner === 'computer'){
-                computerScore++;
-            }
-            else console.log('no points given');
+    <div class="scoreboard">
+        <div class="badge" id="player"> Player </div>
+        <div class="badge" id="computer"> Computer </div>
+        <div>
+            <span class="score" data-player-score> 0 </span> : <span class="score" data-computer-score> 0 </span>
+        </div>
+    </div>
 
-            console.log(`player: ${playerScore} computer: ${computerScore}`);//display score
-            }
-
-            //display final winner
-            if(playerScore > computerScore){
-                console.log('Player Wins');
-            }
-            else if(playerScore < computerScore){
-                console.log('Computer Wins');
-            }
-            else
-                console.log('Game Ends in a Draw');
-        }
-        
-
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
